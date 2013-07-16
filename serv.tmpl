@@ -1,0 +1,9 @@
+{{with $root := .}}
+{{range $i, $v := .FuncArgs}}
+{{$v}}
+
+{{index $root.FuncResults $i}}
+
+{{index $root.Funcs $i}}
+{{end}}
+{{end}}

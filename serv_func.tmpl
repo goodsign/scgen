@@ -1,0 +1,12 @@
+func (service *{{.ServName}}) {{.FName}}(r *http.Request, args *{{.FName}}_Args, reply *{{.FName}}_Result) (error) {
+    {{if len .Args }}logger.Debugf("{{range $index, $value := .Args}}{{if $index}}, {{end}}{{.GetCapPname}}: '{{.GetLoggerFormatId}}'{{end}}",
+                  {{range $index, $value := .Args}}{{if $index}}, {{end}}args.{{.GetCapPname}}{{end}})
+    {{else}}logger.Debugf("")
+    {{end}}
+    {{range $index, $value := .RetValues}}r{{$index}}, {{end}}err := service.{{.ObjTName}}.{{.FName}}({{range $index, $value := .Args}}{{if $index}}, {{end}}args.{{.GetCapPname}}{{end}})
+
+    if err != nil { logger.Error(err); return err}{{range $index, $value := .RetValues}}
+    reply.{{.GetCapPname}} = r{{$index}}{{end}}
+
+    return nil
+}

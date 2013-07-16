@@ -1,0 +1,22 @@
+
+// ...
+func (t *T) Func1(p1 Param1) (*SomeStruct, error) {
+    ...
+}
+
+// aaaaaaaaaa
+func (t *T) SomeFunc2(p2 *Param2, p3 Param3) (error) {
+    a
+    b
+    c
+}
+
+...
+func (t *T) Func3(p3 string, p4 interface{}) (bool, error) {
+    ......
+}
+
+// ...
+func (t *T) SomeFunc4() ([]string, error) {
+    ...
+}

@@ -1,0 +1,8 @@
+const DbServiceName = "{{.ServName}}."
+
+{{with $root := .}}
+{{range $i, $v := .ClientFuncs}}
+{{$v}}
+
+{{end}}
+{{end}}

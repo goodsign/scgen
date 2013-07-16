@@ -1,0 +1,11 @@
+//------------------------------------------------
+// ▢ {{.FName}}
+//------------------------------------------------
+
+func (client *{{.ClientName}}) {{.FName}}({{range $index, $value := .Args}}{{if $index}}, {{end}}{{.Pname}} {{.Ptype}}{{end}}) ({{range $index, $value := .RetValues}}{{.Ptype}}, {{end}}error) {
+    args := service.{{.FName}}_Args{ {{range $index, $value := .Args}}{{if $index}}, {{end}}{{.Pname}}{{end}} }
+    var r service.{{.FName}}_Result
+
+    e := client.GetResult(ServiceName + "{{.FName}}", &args, &r)
+    return {{range $index, $value := .RetValues}}r.{{.GetCapPname}}, {{end}}e
+}
